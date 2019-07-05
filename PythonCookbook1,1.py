@@ -135,6 +135,48 @@ portfolio = [
 {'name': 'ACME', 'shares': 75, 'price': 115.65}
 ]
 cheap = heapq.nsmallest(3, portfolio, key=lambda s: s['price'])
-expensive = heapq.nlargest(3, portfolio, key=lambda s: s['price'])
+#%% kode alternatif cheap
+def cheap (a):
+    return a.price
 
+#%%
+expensive = heapq.nlargest(3, portfolio, key=lambda s: s['price'])
 print(cheap)
+
+#%% contoh lain heap
+nums = [1,8,2,23,7,-4,18,23,42,37,2]
+import heapq
+heapq.heapify(nums)
+print(nums)
+
+
+heap = list(nums)
+print (nums[1])
+print(heap)
+heapq.heapify(heap)
+print(heap)
+
+#%% Soal menarik tentang priority queue
+import heapq
+class PriorityQueue():
+    def __init__ (self):
+        self._queue = []
+        self._index = 0
+        
+    def push(self,item,priority):
+        heapq.heappush(self._queue,(-priority,self._index,item))
+        self._index += 1
+        
+    def pop(self):
+        return heapq.heappop(self._queue)[-1]
+    
+class Item:
+    def __init__(self,name):
+        self.name = name
+    def __repr__(self):
+        return 'Item({!r})'.format(self.name)
+    
+q = PriorityQueue()
+q.push(Item('foo'),1)
+Item
+        
